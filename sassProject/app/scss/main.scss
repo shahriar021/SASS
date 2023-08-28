@@ -1,0 +1,59 @@
+@forward "./base/index";
+@use "./util/index";
+
+
+@mixin para-style($size,$style,$bg-color){
+    text-align: $style;
+    font-size: $size;
+    background-color: $bg-color;
+}
+
+#education p {
+    @include para-style(20px,center,blue);
+    margin-top: 5px;
+}
+
+
+header{
+    background-color: index.$header-bg;
+}
+
+main{
+    background-color:index.$main-bg;
+    padding: 10px;
+}
+// inheritance
+.btn{
+    background-color: greenyellow;
+    border-radius: 30px;
+    padding: 10px;
+
+    @include fontSize(large);
+}
+
+.btnDownload{
+    @extend .btn;
+    
+}
+
+.btnLearn{
+    @extend .btn;
+    background-color: red;
+}
+//inheritence part ends here
+
+
+@mixin fontSize($size){
+    @if $size == small{
+        font-size: 10px;
+    }
+    @else if $size == medium{
+        font-size: 20px;
+    }
+    @else if $size == large{
+        font-size: 30000px;
+    }
+    @else{
+        font-size: 40px;
+    }
+}
